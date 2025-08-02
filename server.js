@@ -8,10 +8,26 @@ const Message = require('./models/Message');
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: "http://localhost:5173" }
+  cors: {
+    origin: [
+      "http://localhost:5173",
+      "https://chat-app-frontend-seven-blond.vercel.app"
+    ],
+    methods: ["GET", "POST"],
+    credentials: true
+  }
 });
 
-app.use(cors());
+
+app.use(cors({
+  origin: [
+    "http://localhost:5173", // for development
+    "https://chat-app-frontend-seven-blond.vercel.app" // Vercel frontend
+  ],
+  methods: ["GET", "POST"],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // MongoDB Connection
