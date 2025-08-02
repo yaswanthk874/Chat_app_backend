@@ -31,8 +31,8 @@ app.use(cors({
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect('mongodb://127.0.0.1:27017/chatapp')
-  .then(() => console.log('Connected to MongoDB'))
+mongoose.connect('mongodb+srv://admin:admin@cluster0.rqhu1vm.mongodb.net/chatapp?retryWrites=true&w=majority&appName=Cluster0')
+  .then(() => console.log('Connected to MongoDB Atlas'))
   .catch(err => console.error(err));
 
 // API: Get chat history
